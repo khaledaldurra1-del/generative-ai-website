@@ -1,4 +1,4 @@
-```html id="r9tk4m"
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,9 +39,30 @@
             animation: bgMove 60s linear infinite;
         }
 
+        body::after {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image:
+                radial-gradient(circle, rgba(0,217,255,0.25) 2px, transparent 2px),
+                radial-gradient(circle, rgba(122,0,255,0.25) 2px, transparent 2px);
+            background-size: 80px 80px;
+            animation: particlesMove 25s linear infinite;
+            z-index: -2;
+            opacity: 0.35;
+        }
+
         @keyframes bgMove {
             from { transform: scale(1); }
             to { transform: scale(1.08); }
+        }
+
+        @keyframes particlesMove {
+            from { transform: translateY(0); }
+            to { transform: translateY(-120px); }
         }
 
         header {
@@ -85,6 +106,25 @@
             color: #00d9ff;
         }
 
+        .floating-logo {
+            position: fixed;
+            top: 90px;
+            left: 30px;
+            z-index: 999;
+            animation: floatLogo 4s ease-in-out infinite;
+        }
+
+        .floating-logo img {
+            width: 80px;
+            filter: drop-shadow(0 0 15px #00d9ff);
+        }
+
+        @keyframes floatLogo {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(6deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
         .hero {
             position: relative;
             height: 100vh;
@@ -118,7 +158,19 @@
         .hero-content h1 {
             font-size: 4.5rem;
             margin-bottom: 20px;
-            text-shadow: 0 0 20px #7a00ff;
+        }
+
+        .glow-title {
+            animation: pulseGlow 2.5s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from {
+                text-shadow: 0 0 15px #00d9ff, 0 0 30px #7a00ff;
+            }
+            to {
+                text-shadow: 0 0 30px #00d9ff, 0 0 60px #7a00ff;
+            }
         }
 
         .hero-content p {
@@ -333,18 +385,26 @@
     </nav>
 </header>
 
+<div class="floating-logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="AI Logo">
+</div>
+
+<audio id="welcomeAudio" autoplay>
+    <source src="https://www.myinstants.com/media/sounds/robotic-voice.mp3" type="audio/mp3">
+</audio>
+
 <section id="home" class="hero">
     <video autoplay muted loop playsinline class="hero-video">
-        <source src="https://cdn.coverr.co/videos/coverr-artificial-intelligence-technology-1561303792818?download=1080p" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-artificial-intelligence-data-flow-31986-large.mp4" type="video/mp4">
     </video>
 
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
-        <h1>Generative AI in Multimedia Systems</h1>
+        <h1 class="glow-title">Generative AI in Multimedia Systems</h1>
         <p>
-            Explore AI-powered image generation, cinematic video creation,
-            voice synthesis, advanced coding, and the future of digital multimedia.
+            Welcome to NeuroVision AI — where futuristic technology transforms
+            creativity, intelligence, multimedia, and innovation.
         </p>
         <a href="#about" class="btn">Explore the Future</a>
     </div>
@@ -365,22 +425,10 @@
 <section id="how" class="section dark">
     <h2>How Does It Work?</h2>
     <div class="cards">
-        <div class="card">
-            <h3>GANs</h3>
-            <p>Create synthetic visuals using adversarial machine learning.</p>
-        </div>
-        <div class="card">
-            <h3>Diffusion Models</h3>
-            <p>Generate realistic visual content through noise reconstruction.</p>
-        </div>
-        <div class="card">
-            <h3>Large Language Models</h3>
-            <p>Systems like GPT and Gemini generate advanced text and reasoning.</p>
-        </div>
-        <div class="card">
-            <h3>Voice Synthesis</h3>
-            <p>AI audio systems produce realistic human speech and sound.</p>
-        </div>
+        <div class="card"><h3>GANs</h3><p>Create synthetic visuals using adversarial learning.</p></div>
+        <div class="card"><h3>Diffusion Models</h3><p>Generate realistic visual content through noise reconstruction.</p></div>
+        <div class="card"><h3>Large Language Models</h3><p>Systems like GPT generate advanced text and reasoning.</p></div>
+        <div class="card"><h3>Voice Synthesis</h3><p>AI audio systems produce realistic human speech.</p></div>
     </div>
 </section>
 
@@ -392,23 +440,23 @@
         <div class="card"><h3>DeepSeek</h3><p>AI coding and analytical assistant.</p></div>
         <div class="card"><h3>DALL·E</h3><p>Image generation from prompts.</p></div>
         <div class="card"><h3>MidJourney</h3><p>Professional AI visual art.</p></div>
-        <div class="card"><h3>Stable Diffusion</h3><p>Open-source creative image generation.</p></div>
-        <div class="card"><h3>Runway ML</h3><p>AI-powered video production.</p></div>
+        <div class="card"><h3>Stable Diffusion</h3><p>Creative image generation.</p></div>
+        <div class="card"><h3>Runway ML</h3><p>AI video production.</p></div>
         <div class="card"><h3>Sora</h3><p>Text-to-video generation.</p></div>
         <div class="card"><h3>ElevenLabs</h3><p>Voice cloning and narration.</p></div>
-        <div class="card"><h3>Adobe Firefly</h3><p>Creative AI design suite.</p></div>
+        <div class="card"><h3>Adobe Firefly</h3><p>Creative AI suite.</p></div>
     </div>
 </section>
 
 <section id="applications" class="section dark">
     <h2>Applications in Multimedia</h2>
     <div class="cards">
-        <div class="card"><h3>AI Image Design</h3><p>Advertising, art, branding.</p></div>
-        <div class="card"><h3>Video Creation</h3><p>Film production and digital storytelling.</p></div>
-        <div class="card"><h3>Audio & Voice</h3><p>Speech, dubbing, music.</p></div>
-        <div class="card"><h3>Education</h3><p>Interactive simulations and learning.</p></div>
-        <div class="card"><h3>Gaming</h3><p>Procedural design and narrative generation.</p></div>
-        <div class="card"><h3>Marketing</h3><p>Automated content campaigns.</p></div>
+        <div class="card"><h3>AI Image Design</h3><p>Advertising, branding, visual media.</p></div>
+        <div class="card"><h3>Video Creation</h3><p>Film production and storytelling.</p></div>
+        <div class="card"><h3>Audio & Voice</h3><p>Speech, music, narration.</p></div>
+        <div class="card"><h3>Education</h3><p>Interactive AI simulations.</p></div>
+        <div class="card"><h3>Gaming</h3><p>Procedural storytelling.</p></div>
+        <div class="card"><h3>Marketing</h3><p>Automated campaigns.</p></div>
     </div>
 </section>
 
@@ -428,25 +476,25 @@
 
         <div class="gallery-item">
             <video controls>
-                <source src="https://cdn.coverr.co/videos/coverr-futuristic-technology-background-1570093815887?download=1080p" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-artificial-intelligence-data-flow-31986-large.mp4" type="video/mp4">
             </video>
             <p>AI Cinematic Video</p>
         </div>
     </div>
 
     <audio controls>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+        <source src="https://www.myinstants.com/media/sounds/robotic-voice.mp3" type="audio/mp3">
     </audio>
 
-    <p>AI Generated Voice / Sound Experience</p>
+    <p>AI Welcome Voice Experience</p>
 </section>
 
 <section id="assistant" class="section dark">
     <h2>Interactive AI Assistant</h2>
-    <p>Ask NeuroVision AI about tools, multimedia, GPT, Gemini, DeepSeek, images, videos, and more.</p>
+    <p>Ask NeuroVision AI about GPT, Gemini, DeepSeek, multimedia, images, video, and more.</p>
 
     <div class="ai-chat-box">
-        <input type="text" id="userInput" placeholder="Ask about AI tools, multimedia systems, GPT, Gemini..." />
+        <input type="text" id="userInput" placeholder="Ask about AI tools, multimedia systems..." />
         <button onclick="askAI()">Ask AI</button>
     </div>
 
@@ -460,24 +508,24 @@
         <div class="pros">
             <h3>Advantages</h3>
             <ul>
-                <li>Rapid content production</li>
-                <li>Lower creative costs</li>
-                <li>Enhanced productivity</li>
+                <li>Rapid content creation</li>
+                <li>Lower production cost</li>
+                <li>Enhanced creativity</li>
                 <li>Scalable innovation</li>
-                <li>Accessible multimedia creation</li>
-                <li>Automation of repetitive workflows</li>
+                <li>Accessible digital production</li>
+                <li>Workflow automation</li>
             </ul>
         </div>
 
         <div class="cons">
             <h3>Disadvantages</h3>
             <ul>
-                <li>Ethical misuse risks</li>
-                <li>Deepfake manipulation</li>
-                <li>Copyright challenges</li>
-                <li>Bias and misinformation</li>
-                <li>Potential job displacement</li>
-                <li>High computational requirements</li>
+                <li>Deepfake misuse</li>
+                <li>Copyright concerns</li>
+                <li>Ethical issues</li>
+                <li>Bias risks</li>
+                <li>Job displacement</li>
+                <li>High computational costs</li>
             </ul>
         </div>
     </div>
@@ -498,6 +546,16 @@
 </footer>
 
 <script>
+window.addEventListener("load", () => {
+    const audio = document.getElementById("welcomeAudio");
+    if (audio) {
+        audio.volume = 0.8;
+        audio.play().catch(() => {
+            console.log("Autoplay blocked until user interaction.");
+        });
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".card");
 
@@ -528,28 +586,28 @@ function askAI() {
     let response = "";
 
     if (input.includes("chatgpt") || input.includes("gpt")) {
-        response = "ChatGPT is a leading AI system for conversation, writing, coding, education, and advanced productivity.";
+        response = "ChatGPT is a leading AI platform for writing, coding, research, and intelligent communication.";
     }
     else if (input.includes("gemini")) {
-        response = "Gemini is Google’s multimodal AI assistant optimized for reasoning, productivity, and integrated services.";
+        response = "Gemini is Google’s advanced multimodal AI assistant for productivity and reasoning.";
     }
     else if (input.includes("deepseek")) {
-        response = "DeepSeek is an advanced AI platform focused on code generation, technical reasoning, and intelligent research.";
+        response = "DeepSeek focuses on intelligent coding, technical research, and analytical AI solutions.";
     }
-    else if (input.includes("dall") || input.includes("image")) {
-        response = "DALL·E, MidJourney, and Stable Diffusion generate highly creative visual content from text prompts.";
+    else if (input.includes("image") || input.includes("dall")) {
+        response = "DALL·E, MidJourney, and Stable Diffusion generate advanced AI visual media.";
     }
     else if (input.includes("video") || input.includes("sora")) {
-        response = "Sora and Runway ML provide next-generation AI video generation and editing technologies.";
+        response = "Sora and Runway ML are next-generation AI video generation technologies.";
     }
-    else if (input.includes("voice") || input.includes("audio") || input.includes("elevenlabs")) {
-        response = "ElevenLabs specializes in realistic AI voice synthesis, speech generation, and dubbing.";
+    else if (input.includes("voice") || input.includes("audio")) {
+        response = "ElevenLabs and similar tools generate realistic AI voice, narration, and dubbing.";
     }
     else if (input.includes("generative ai")) {
-        response = "Generative AI uses neural networks to create original multimedia outputs including text, code, visuals, video, and audio.";
+        response = "Generative AI creates original text, code, sound, images, and videos using deep learning.";
     }
     else {
-        response = "NeuroVision AI: Generative AI transforms multimedia systems by integrating intelligent creation across design, education, media, and digital production.";
+        response = "NeuroVision AI transforms multimedia through intelligent tools for digital creativity and innovation.";
     }
 
     responseBox.innerHTML = response;
@@ -558,4 +616,4 @@ function askAI() {
 
 </body>
 </html>
-```
+
